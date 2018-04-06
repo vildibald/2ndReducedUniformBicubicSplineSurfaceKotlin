@@ -1,0 +1,1 @@
+typealias DoubleMatrix = Array<DoubleArray>
