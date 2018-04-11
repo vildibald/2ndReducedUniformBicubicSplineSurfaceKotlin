@@ -1,3 +1,6 @@
+package splineInterpolation
+
+import splineInterpolation.utils.ThreadPool
 import java.util.concurrent.Future
 
 inline fun loop(from: Int, to: Int, step: Int, inParallel: Boolean, crossinline body: (i: Int) -> Unit) {

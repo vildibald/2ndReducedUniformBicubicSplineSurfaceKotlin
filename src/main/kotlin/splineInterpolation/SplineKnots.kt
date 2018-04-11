@@ -1,4 +1,6 @@
-class Spline(val x: DoubleArray, val y: DoubleArray) {
+package splineInterpolation
+
+class SplineKnots(val x: DoubleArray, val y: DoubleArray) {
     private val z: DoubleMatrix = DoubleMatrix(x.size, init = { DoubleArray(y.size) })
     private val dx: DoubleMatrix = DoubleMatrix(y.size, init = { DoubleArray(x.size) })
     private val dy: DoubleMatrix = DoubleMatrix(x.size, init = { DoubleArray(y.size) })

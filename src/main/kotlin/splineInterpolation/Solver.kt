@@ -1,3 +1,5 @@
+package splineInterpolation
+
 interface Solver {
     fun solve(derivationCount: Int,
               tridiagonals: Tridiagonals,

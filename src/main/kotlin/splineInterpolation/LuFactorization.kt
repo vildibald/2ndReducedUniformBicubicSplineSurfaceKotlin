@@ -1,3 +1,5 @@
+package splineInterpolation
+
 class LuFactorization {
     fun solveTridiagonalSystem(lowerDiagonalValue: Double,
                                mainDiagonalValue: Double,

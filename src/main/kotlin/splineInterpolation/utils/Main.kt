@@ -1,3 +1,6 @@
+package splineInterpolation.utils
+
+import splineInterpolation.*
 import kotlin.math.sin
 import kotlin.math.sqrt
 
@@ -57,24 +60,24 @@ fun printSurfaceResult(result: ComparisonBenchmarkResult) {
             "Difference F/SR: ${result.ratio(0, 2)} \n")
 }
 
-fun main(args: Array<String>) {
-    while (true) {
-        println("3: Spline surface benchmark.")
-        println("4: Spline surface options.")
-        println("Q: End program.")
-        val input = readLine() ?: " "
-
-        when (input) {
-            "3" -> performSurfaceBenchmark()
-            "4" -> performSurfaceBenchmarkWithOptions()
-            "Q" -> return
-        }
-    }
-}
+//fun main(args: Array<String>) {
+//    while (true) {
+//        println("3: splineInterpolation.SplineKnots surface benchmark.")
+//        println("4: splineInterpolation.SplineKnots surface options.")
+//        println("Q: End program.")
+//        val input = readLine() ?: " "
+//
+//        when (input) {
+//            "3" -> splineInterpolation.utils.performSurfaceBenchmark()
+//            "4" -> splineInterpolation.utils.performSurfaceBenchmarkWithOptions()
+//            "Q" -> return
+//        }
+//    }
+//}
 
 fun performSurfaceBenchmark() {
     try {
-        println("Spline surface benchmark")
+        println("splineInterpolation.SplineKnots surface benchmark")
         println("Enter number of iterations: ")
         val numIterations = (readLine() ?: " ").toInt()
         println("Enter number of knots: ")
@@ -86,7 +89,7 @@ fun performSurfaceBenchmark() {
 
 fun performSurfaceBenchmarkWithOptions() {
     try {
-        println("Spline surface benchmark (options)")
+        println("splineInterpolation.SplineKnots surface benchmark (options)")
         println("Enter number of iterations: ")
         val numIterations = (readLine() ?: " ").toInt()
         println("Enter number of knots: ")

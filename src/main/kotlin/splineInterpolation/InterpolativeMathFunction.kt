@@ -1,3 +1,5 @@
+package splineInterpolation
+
 typealias MathFunction = (Double, Double) -> Double
 
 class InterpolativeMathFunction(val z: MathFunction) {

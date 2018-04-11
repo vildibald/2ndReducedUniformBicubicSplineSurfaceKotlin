@@ -1,3 +1,5 @@
+package splineInterpolation
+
 internal class SecondReducedSolver : Solver {
     override fun solve(derivationCount: Int, tridiagonals: Tridiagonals, p: (Int, Int) -> Double,
                        dget: (Int, Int) -> Double, dset: (Int, Int, Double) -> Unit, systemIdx:

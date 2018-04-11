@@ -1,3 +1,7 @@
+package splineInterpolation.utils
+
+import splineInterpolation.Tridiagonal
+
 class MultiThreadPreparator {
     fun prepareList(tridiagonals: MutableList<Tridiagonal>) {
         val cpuCount = ThreadPool.logicalCpuCount

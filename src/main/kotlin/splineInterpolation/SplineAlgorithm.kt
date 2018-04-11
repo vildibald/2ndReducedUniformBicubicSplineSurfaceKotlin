@@ -1,9 +1,13 @@
+package splineInterpolation
+
+import splineInterpolation.utils.Timer
+
 class SplineAlgorithm(private val function: InterpolativeMathFunction,
                       private val solver: Solver) {
 
     fun calculate(xVector: DoubleArray, yVector: DoubleArray, inParallel: Boolean = false):
-            Pair<Spline, Long> {
-        val spline = Spline(xVector, yVector)
+            Pair<SplineKnots, Long> {
+        val spline = SplineKnots(xVector, yVector)
         val (xTridiagonals, yTridiagonals) = initialize(spline, inParallel)
         val timer = Timer.start()
         fillDx(spline, xTridiagonals)
@@ -14,7 +18,7 @@ class SplineAlgorithm(private val function: InterpolativeMathFunction,
         return spline to executionTime
     }
 
-    private fun fillDx(spline: Spline, xTridiagonals: Tridiagonals) {
+    private fun fillDx(spline: SplineKnots, xTridiagonals: Tridiagonals) {
         val parameterGetter = { i: Int, j: Int -> spline.z(i, j) }
         val derivationGetter = { i: Int, j: Int -> spline.dx(i, j) }
         val derivationSetter = { i: Int, j: Int, value: Double -> spline.setDx(i, j, value) }
@@ -22,7 +26,7 @@ class SplineAlgorithm(private val function: InterpolativeMathFunction,
                 derivationGetter, derivationSetter)
     }
 
-    private fun fillDy(spline: Spline, yTridiagonals: Tridiagonals) {
+    private fun fillDy(spline: SplineKnots, yTridiagonals: Tridiagonals) {
         val parameterGetter = { i: Int, j: Int -> spline.z(j, i) }
         val derivationGetter = { i: Int, j: Int -> spline.dy(j, i) }
         val derivationSetter = { i: Int, j: Int, value: Double -> spline.setDy(j, i, value) }
@@ -30,7 +34,7 @@ class SplineAlgorithm(private val function: InterpolativeMathFunction,
                 derivationGetter, derivationSetter)
     }
 
-    private fun fillDxy(spline: Spline, xTridiagonals: Tridiagonals) {
+    private fun fillDxy(spline: SplineKnots, xTridiagonals: Tridiagonals) {
         val parameterGetter = { i: Int, j: Int -> spline.dy(i, j) }
         val derivationGetter = { i: Int, j: Int -> spline.dxy(i, j) }
         val derivationSetter = { i: Int, j: Int, value: Double -> spline.setDxy(i, j, value) }
@@ -38,7 +42,7 @@ class SplineAlgorithm(private val function: InterpolativeMathFunction,
                 derivationGetter, derivationSetter)
     }
 
-    private fun fillDyx(spline: Spline, yTridiagonals: Tridiagonals) {
+    private fun fillDyx(spline: SplineKnots, yTridiagonals: Tridiagonals) {
         val parameterGetter = { i: Int, j: Int -> spline.dx(j, i) }
         val derivationGetter = { i: Int, j: Int -> spline.dxy(j, i) }
         val derivationSetter = { i: Int, j: Int, value: Double -> spline.setDxy(j, i, value) }
@@ -46,7 +50,7 @@ class SplineAlgorithm(private val function: InterpolativeMathFunction,
                 derivationGetter, derivationSetter)
     }
 
-    private fun initialize(spline: Spline, inParallel: Boolean): Pair<Tridiagonals, Tridiagonals> {
+    private fun initialize(spline: SplineKnots, inParallel: Boolean): Pair<Tridiagonals, Tridiagonals> {
         spline.initialize(function)
         return initializeTridiagonals(spline.x, spline.y, inParallel)
     }

@@ -1,3 +1,5 @@
+package splineInterpolation.utils
+
 class ComparisonBenchmarkResult() : Iterable<Long>  {
 
     private val algorithmTimes = mutableListOf<Long>()

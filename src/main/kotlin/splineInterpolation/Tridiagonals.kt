@@ -1,3 +1,8 @@
+package splineInterpolation
+
+import splineInterpolation.utils.MultiThreadPreparator
+import splineInterpolation.utils.ThreadPool
+
 class Tridiagonals(tridiagonal: Tridiagonal) {
     private val tridiagonals = mutableListOf<Tridiagonal>()
 

@@ -1,3 +1,8 @@
+package splineInterpolation
+
+import splineInterpolation.utils.Measurable
+import splineInterpolation.utils.Timer
+
 class Tridiagonal : Measurable {
 
     override val executionTime: Long

@@ -1,3 +1,5 @@
+package splineInterpolation
+
 class FirstReducedSolver : Solver {
     override fun solve(derivationCount: Int,
                        tridiagonals: Tridiagonals,
